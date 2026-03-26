@@ -604,8 +604,8 @@ export default function App() {
             <div>
               <h3 className="font-semibold text-xl mb-4">เวลาทำการ</h3>
               <div className="space-y-2 text-sm text-gray-400">
-                <p>จันทร์-ศุกร์: 10:00-23:00 น.</p>
-                <p>เสาร์-อาทิตย์: 10:00-24:00 น.</p>
+                <p>จันทร์-ศุกร์: 14.00-24.00 น.</p>
+                <p>อาทิตย์: หยุด</p>
                 <p className="pt-3 text-purple-400">
                   💡 แนะนำจองล่วงหน้าช่วงวันหยุด
                 </p>
