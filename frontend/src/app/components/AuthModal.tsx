@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { toast } from "sonner";
+import { Facebook } from "lucide-react";
 import { useAuth } from "./AuthProvider";
 
 interface AuthModalProps {
@@ -22,7 +23,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, signInWithFacebook } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,6 +102,24 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               : isLogin
               ? "เข้าสู่ระบบ"
               : "สมัครสมาชิก"}
+          </Button>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border" />
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="bg-background px-2 text-muted-foreground">หรือ</span>
+            </div>
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={signInWithFacebook}
+            disabled={loading}
+          >
+            <Facebook className="mr-2 h-4 w-4 text-[#1877F2]" />
+            เข้าสู่ระบบด้วย Facebook
           </Button>
           <p className="text-center text-sm text-muted-foreground">
             {isLogin ? "ยังไม่มีบัญชี?" : "มีบัญชีแล้ว?"}{" "}
