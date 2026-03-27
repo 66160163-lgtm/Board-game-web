@@ -20,7 +20,7 @@
 | UI Components | Radix UI, Lucide React, Sonner |
 | Backend | Express.js, Node.js |
 | Database & Auth | Supabase (PostgreSQL + Auth) |
-| Deployment | Docker, Nginx |
+| Deployment | Vercel (Frontend + Backend), Supabase |
 
 ## Project Structure
 
@@ -74,14 +74,14 @@ node index.js
 
 รันที่ port 3001
 
-### Docker
+## Deployment
 
-```bash
-docker compose up --build
-```
-
-- Frontend: http://localhost:8080
-- Backend: http://localhost:3001
+| Service | Platform |
+|---------|----------|
+| Frontend | Vercel |
+| Backend | Vercel (Serverless / Node.js) |
+| Database | Supabase (PostgreSQL) |
+| Authentication | Supabase Auth |
 
 ## Environment Variables
 
