@@ -177,7 +177,7 @@ export function BookingModal({
         hours: Number(formData.hours),
         guests: Number(formData.guests),
         table_name: tableName,
-        user_id: user?.id ?? null,
+        user_id: user!.id,
         menu_orders: buildMenuOrdersJson(),
       });
       if (error) throw error;

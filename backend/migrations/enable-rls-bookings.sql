@@ -22,11 +22,11 @@ CREATE POLICY "Anyone can view bookings"
   FOR SELECT
   USING (true);
 
--- 2. INSERT: anyone can create a booking (guests may not be signed in)
-CREATE POLICY "Anyone can create bookings"
+-- 2. INSERT: only logged-in users can create a booking
+CREATE POLICY "Authenticated users can create bookings"
   ON public.bookings
   FOR INSERT
-  WITH CHECK (true);
+  WITH CHECK (auth.uid() IS NOT NULL);
 
 -- 3. UPDATE: only admins can update bookings (toggle status)
 CREATE POLICY "Admins can update bookings"
