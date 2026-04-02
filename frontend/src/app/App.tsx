@@ -32,65 +32,44 @@ const tables = [
   {
     id: 1,
     name: "โต๊ะ 1",
-    image: "https://images.unsplash.com/photo-1640703935937-5e6ec134977d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YX ЮрYW50JTIwdGFibGUlMjBzZXR0aW5nfGVufDF8fHx8MTc3MzAzOTk3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/table/1.jpg",
     pricePerPerson: 40,
-    capacity: 4,
-    location: "โซนหน้าร้าน",
-    features: ["เต้าเสียบไฟ", "แสงสว่างดี"],
+    capacity: 8,
   },
   {
     id: 2,
     name: "โต๊ะ 2",
-    image: "https://images.unsplash.com/photo-1750040970096-31907e42d6a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwaW50ZXJpb3IlMjBjb3p5fGVufDF8fHx8MTc3MzA4MDA2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/table/2.jpg",
     pricePerPerson: 40,
-    capacity: 4,
-    location: "โซนหน้าร้าน",
-    features: ["เต้าเสียบไฟ", "แสงสว่างดี"],
+    capacity: 8,
   },
   {
     id: 3,
     name: "โต๊ะ 3",
-    image: "https://images.unsplash.com/photo-1640703935937-5e6ec134977d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YX ЮрYW50JTIwdGFibGUlMjBzZXR0aW5nfGVufDF8fHx8MTc3MzAzOTk3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/table/3.jpg",
     pricePerPerson: 40,
-    capacity: 6,
-    location: "โซนกลางร้าน",
-    features: ["เต้าเสียบไฟ", "โต๊ะใหญ่"],
+    capacity: 8,
   },
   {
     id: 4,
     name: "โต๊ะ 4",
-    image: "https://images.unsplash.com/photo-1750913717816-a32bfc6a5fd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3p5JTIwY29ybmVyJTIwY2FmZSUyMHNlYXRpbmd8ZW58MXx8fHwxNzczMTMxNDk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/table/4.jpg",
     pricePerPerson: 40,
-    capacity: 6,
-    location: "โซนกลางร้าน",
-    features: ["เต้าเสียบไฟ", "โต๊ะใหญ่"],
+    capacity: 8,
   },
   {
     id: 5,
     name: "โต๊ะ 5",
-    image: "https://images.unsplash.com/photo-1750040970096-31907e42d6a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwaW50ZXJpb3IlMjBjb3p5fGVufDF8fHx8MTc3MzA4MDA2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/table/5.jpg",
     pricePerPerson: 40,
-    capacity: 4,
-    location: "โซนริมหน้าต่าง",
-    features: ["วิวสวย", "เต้าเสียบไฟ"],
+    capacity: 8,
   },
   {
-    id:6,
+    id: 6,
     name: "โต๊ะ 6",
-    image: "https://images.unsplash.com/photo-1640703935937-5e6ec134977d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YX ЮрYW50JTIwdGFibGUlMjBzZXR0aW5nfGVufDF8fHx8MTc3MzAzOTk3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/table/6.jpg",
     pricePerPerson: 40,
-    capacity: 6,
-    location: "โซนริมหน้าต่าง",
-    features: ["วิวสวย", "เต้าเสียบไฟ"],
-  },
-  {
-    id: 7,
-    name: "โต๊ะ 7",
-    image: "https://images.unsplash.com/photo-1750913717816-a32bfc6a5fd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3p5JTIwY29ybmVyJTIwY2FmZSUyMHNlYXRpbmd8ZW58MXx8fHwxNzczMTMxNDk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    pricePerPerson: 40,
-    capacity: 4,
-    location: "โซนหลังร้าน",
-    features: ["เงียบสงบ", "เต้าเสียบไฟ"],
+    capacity: 8,
   },
 ];
 
@@ -377,9 +356,9 @@ export default function App() {
               <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mb-4">
                 <Clock className="w-10 h-10 text-foreground" />
               </div>
-              <h3 className="font-semibold text-lg mb-2 text-foreground">เปิด จันทร์-เสาร์</h3>
+              <h3 className="font-semibold text-lg mb-2 text-foreground">เปิด จันทร์-อาทิตย์</h3>
               <p className="text-muted-foreground text-sm">
-                เปิดบริการ จันทร์-เสาร์ 14:00-24:00 น.
+                เปิดบริการ จันทร์-อาทิตย์ 14:00-24:00 น.
               </p>
             </div>
           </div>
@@ -564,8 +543,7 @@ export default function App() {
             <div>
               <h3 className="font-semibold text-xl mb-4">เวลาทำการ</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>จันทร์-เสาร์: 14.00-24.00 น.</p>
-                <p>อาทิตย์: หยุด</p>
+                <p>จันทร์-อาทิตย์: 14.00-24.00 น.</p>
                 <p className="pt-3 text-foreground/90">
                   💡 แนะนำจองล่วงหน้าช่วงวันหยุด
                 </p>

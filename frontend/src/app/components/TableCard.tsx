@@ -1,4 +1,4 @@
-import { Users, MapPin } from "lucide-react";
+import { Users } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -9,8 +9,6 @@ interface TableCardProps {
   image: string;
   pricePerPerson: number;
   capacity: number;
-  location: string;
-  features: string[];
   onBook: (id: number, name: string, type: 'table') => void;
 }
 
@@ -20,8 +18,6 @@ export function TableCard({
   image,
   pricePerPerson,
   capacity,
-  location,
-  features,
   onBook,
 }: TableCardProps) {
   return (
@@ -41,19 +37,8 @@ export function TableCard({
         <div className="space-y-2 mb-3">
           <div className="flex items-center gap-2 text-muted-foreground">
             <Users className="w-4 h-4" />
-            <span className="text-sm">รองรับ {capacity} คน</span>
+            <span className="text-sm">รองรับ 6-{capacity} คน</span>
           </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="w-4 h-4" />
-            <span className="text-sm">{location}</span>
-          </div>
-        </div>
-        <div className="flex gap-2 flex-wrap">
-          {features.map((feature) => (
-            <Badge key={feature} variant="secondary" className="text-xs">
-              {feature}
-            </Badge>
-          ))}
         </div>
       </CardContent>
       <CardFooter className="p-5 pt-0">

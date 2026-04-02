@@ -44,7 +44,7 @@ export function BookingModal({
     date: "",
     time: "",
     hours: "2",
-    guests: "4",
+    guests: "6",
   });
   const [menuOrders, setMenuOrders] = useState<Record<number, number>>({});
   const [extraOrders, setExtraOrders] = useState<Record<string, number>>({});
@@ -185,7 +185,7 @@ export function BookingModal({
         description: `คุณได้จอง ${tableName} เรียบร้อยแล้ว`,
       });
       onClose();
-      setFormData({ name: "", phone: "", date: "", time: "", hours: "2", guests: "4" });
+      setFormData({ name: "", phone: "", date: "", time: "", hours: "2", guests: "6" });
       setMenuOrders({});
       setExtraOrders({});
     } catch (err: any) {

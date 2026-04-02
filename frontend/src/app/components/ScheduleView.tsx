@@ -24,7 +24,6 @@ const TABLE_NAMES = [
   "โต๊ะ 4",
   "โต๊ะ 5",
   "โต๊ะ 6",
-  "โต๊ะ 7",
 ];
 
 const HOURS = Array.from({ length: 10 }, (_, i) => i + 14); // 14-23
