@@ -1,7 +1,6 @@
 import { Users } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardFooter } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { Card, CardContent } from "./ui/card";
 
 interface TableCardProps {
   id: number;
@@ -21,34 +20,27 @@ export function TableCard({
   onBook,
 }: TableCardProps) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="relative h-48 overflow-hidden">
+    <Card className="overflow-hidden group">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <Badge className="absolute top-3 right-3 bg-green-600 text-base px-3 py-1">
-          ฿{pricePerPerson}/คน/ชม.
-        </Badge>
       </div>
-      <CardContent className="p-5">
-        <h3 className="font-semibold text-xl mb-3">{name}</h3>
-        <div className="space-y-2 mb-3">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Users className="w-4 h-4" />
-            <span className="text-sm">รองรับ 6-{capacity} คน</span>
-          </div>
+      <CardContent className="p-4">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold">{name}</h3>
+          <span className="text-sm text-muted-foreground">฿{pricePerPerson}/คน/ชม.</span>
         </div>
-      </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button
-          onClick={() => onBook(id, name, 'table')}
-          className="w-full bg-green-600 hover:bg-green-700 text-base py-6"
-        >
+        <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-4">
+          <Users className="h-3.5 w-3.5" />
+          <span>6–{capacity} คน</span>
+        </div>
+        <Button onClick={() => onBook(id, name, 'table')} className="w-full" size="sm">
           จองโต๊ะนี้
         </Button>
-      </CardFooter>
+      </CardContent>
     </Card>
   );
 }

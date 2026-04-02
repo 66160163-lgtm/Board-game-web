@@ -150,18 +150,18 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-6xl max-h-[90vh] p-0 gap-0 flex flex-col overflow-hidden [&>button]:text-muted-foreground [&>button]:hover:text-foreground [&>button]:top-4 [&>button]:right-6">
+      <DialogContent className="max-w-full sm:max-w-6xl h-[100dvh] sm:h-[90vh] p-0 gap-0 flex flex-col overflow-hidden rounded-none sm:rounded-lg [&>button]:text-muted-foreground [&>button]:hover:text-foreground [&>button]:top-3 [&>button]:right-3 sm:[&>button]:top-4 sm:[&>button]:right-6">
         {/* Header */}
-        <DialogHeader className="bg-muted px-6 py-4 flex-row items-center space-y-0 border-b border-border">
-          <DialogTitle className="flex items-center gap-3 text-foreground text-xl">
+        <DialogHeader className="bg-muted px-4 sm:px-6 py-3 sm:py-4 flex-row items-center space-y-0 border-b border-border">
+          <DialogTitle className="flex items-center gap-2 sm:gap-3 text-foreground text-base sm:text-xl">
             <CalendarDays className="w-6 h-6" />
             ตารางเวลา
           </DialogTitle>
         </DialogHeader>
 
         {/* Date Navigation */}
-        <div className="px-6 py-4 border-b border-border bg-muted">
-          <div className="flex items-center justify-between mb-3">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-border bg-muted">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
             <Button
               variant="ghost"
               size="icon"
@@ -170,7 +170,7 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
-            <p className="text-lg font-semibold text-foreground">
+            <p className="text-sm sm:text-lg font-semibold text-foreground">
               {formatDateThai(selectedDate)}
             </p>
             <Button variant="ghost" size="icon" onClick={() => changeDate(1)}>
@@ -179,7 +179,7 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
           </div>
 
           {/* Week strip */}
-          <div className="flex justify-center gap-1.5">
+          <div className="flex justify-center gap-1 sm:gap-1.5 overflow-x-auto">
             {weekDates.map((d, i) => {
               const isSelected = toDateString(d) === dateStr;
               const isSun = d.getDay() === 0;
@@ -193,10 +193,10 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
                   size="sm"
                   onClick={() => !isDisabled && setSelectedDate(d)}
                   disabled={isDisabled}
-                  className="flex flex-col h-auto px-3 py-2 min-w-[48px]"
+                  className="flex flex-col h-auto px-2 sm:px-3 py-1.5 sm:py-2 min-w-[40px] sm:min-w-[48px]"
                 >
                   <span className="text-xs font-medium">{SHORT_THAI_DAYS[d.getDay()]}</span>
-                  <span className="text-lg font-bold leading-tight">{d.getDate()}</span>
+                  <span className="text-base sm:text-lg font-bold leading-tight">{d.getDate()}</span>
                 </Button>
               );
             })}
@@ -204,7 +204,7 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
         </div>
 
         {/* Schedule Grid */}
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-hidden">
           {isSunday ? (
             <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-6">
               <Clock className="w-16 h-16 mb-4" />
@@ -217,33 +217,34 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
               ))}
             </div>
           ) : (
-            <ScrollArea className="h-full">
-              <div className="p-6">
+            <div className="h-full overflow-auto overscroll-contain touch-pan-x touch-pan-y">
+              <div className="p-4 sm:p-6">
                 {/* Legend */}
-                <div className="flex items-center gap-6 mb-4 text-sm">
+                <div className="flex items-center gap-4 sm:gap-6 mb-4 text-xs sm:text-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700" />
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 rounded bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700" />
                     <span className="text-muted-foreground">ว่าง</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700" />
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 rounded bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700" />
                     <span className="text-muted-foreground">จองแล้ว</span>
                   </div>
                 </div>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse min-w-[700px]">
+                <div>
+                  <table className="w-full border-collapse min-w-[480px] sm:min-w-[700px]">
                     <thead>
                       <tr>
-                        <th className="sticky left-0 bg-muted px-3 py-3 text-left text-sm font-semibold text-foreground border border-border rounded-tl-lg z-10">
+                        <th className="sticky left-0 bg-muted px-2 sm:px-3 py-2 sm:py-3 text-left text-xs sm:text-sm font-semibold text-foreground border border-border z-10">
                           เวลา
                         </th>
                         {TABLE_NAMES.map((name) => (
                           <th
                             key={name}
-                            className="px-3 py-3 text-center text-sm font-semibold text-foreground border border-border bg-muted"
+                            className="px-1 sm:px-3 py-2 sm:py-3 text-center text-xs sm:text-sm font-semibold text-foreground border border-border bg-muted whitespace-nowrap"
                           >
-                            {name}
+                            <span className="sm:hidden">{name.replace("โต๊ะ ", "T")}</span>
+                            <span className="hidden sm:inline">{name}</span>
                           </th>
                         ))}
                       </tr>
@@ -251,8 +252,9 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
                     <tbody>
                       {HOURS.map((hour) => (
                         <tr key={hour} className="group">
-                          <td className="sticky left-0 bg-card px-3 py-3 text-sm font-medium text-foreground border border-border whitespace-nowrap z-10">
-                            {String(hour).padStart(2, "0")}:00 - {String(hour + 1).padStart(2, "0")}:00
+                          <td className="sticky left-0 bg-card px-2 sm:px-3 py-2 sm:py-3 text-xs sm:text-sm font-medium text-foreground border border-border whitespace-nowrap z-10">
+                            <span className="sm:hidden">{String(hour).padStart(2, "0")}-{String(hour + 1).padStart(2, "0")}</span>
+                            <span className="hidden sm:inline">{String(hour).padStart(2, "0")}:00 - {String(hour + 1).padStart(2, "0")}:00</span>
                           </td>
                           {TABLE_NAMES.map((tableName) => {
                             const booking = bookedMap[tableName]?.get(hour);
@@ -260,27 +262,28 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
                             return (
                               <td
                                 key={tableName}
-                                className={`px-2 py-3 text-center text-xs border border-border transition-colors ${
+                                className={`px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-xs border border-border transition-colors ${
                                   isBooked
-                                    ? "bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30"
-                                    : "bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30"
+                                    ? "bg-red-50 dark:bg-red-900/20"
+                                    : "bg-green-50 dark:bg-green-900/20"
                                 }`}
                               >
                                 {isBooked ? (
                                   <div className="flex flex-col items-center gap-0.5">
-                                    <Badge variant="destructive" className="text-xs">
-                                      จองแล้ว
-                                    </Badge>
+                                    <span className="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium">
+                                      <span className="sm:hidden">จอง</span>
+                                      <span className="hidden sm:inline">จองแล้ว</span>
+                                    </span>
                                     {isAdmin && booking && (
-                                      <span className="text-muted-foreground text-[10px] leading-tight">
-                                        {booking.customer_name} ({booking.guests} คน)
+                                      <span className="text-muted-foreground text-[9px] sm:text-[10px] leading-tight truncate max-w-[60px] sm:max-w-none">
+                                        {booking.customer_name}
                                       </span>
                                     )}
                                   </div>
                                 ) : (
-                                  <Badge className="bg-green-600 hover:bg-green-700 text-white text-xs">
+                                  <span className="inline-flex items-center rounded-full bg-green-600 text-white px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium">
                                     ว่าง
-                                  </Badge>
+                                  </span>
                                 )}
                               </td>
                             );
@@ -295,25 +298,25 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
 
                 {/* Summary */}
                 <h3 className="text-sm font-semibold text-foreground mb-3">สรุปวันนี้</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                   <Card>
-                    <CardContent className="p-3">
-                      <p className="text-muted-foreground text-xs">จำนวนการจอง</p>
-                      <p className="text-xl font-bold text-foreground">{bookings.length}</p>
+                    <CardContent className="p-2.5 sm:p-3">
+                      <p className="text-muted-foreground text-[10px] sm:text-xs">จำนวนการจอง</p>
+                      <p className="text-lg sm:text-xl font-bold text-foreground">{bookings.length}</p>
                     </CardContent>
                   </Card>
                   <Card>
-                    <CardContent className="p-3">
-                      <p className="text-muted-foreground text-xs">โต๊ะที่มีคนจอง</p>
-                      <p className="text-xl font-bold text-red-500">
+                    <CardContent className="p-2.5 sm:p-3">
+                      <p className="text-muted-foreground text-[10px] sm:text-xs">โต๊ะที่มีคนจอง</p>
+                      <p className="text-lg sm:text-xl font-bold text-red-500">
                         {new Set(bookings.map((b) => b.table_name)).size}/{TABLE_NAMES.length}
                       </p>
                     </CardContent>
                   </Card>
                   <Card>
-                    <CardContent className="p-3">
-                      <p className="text-muted-foreground text-xs">ช่องว่างทั้งหมด</p>
-                      <p className="text-xl font-bold text-green-600">
+                    <CardContent className="p-2.5 sm:p-3">
+                      <p className="text-muted-foreground text-[10px] sm:text-xs">ช่องว่างทั้งหมด</p>
+                      <p className="text-lg sm:text-xl font-bold text-green-600">
                         {TABLE_NAMES.length * HOURS.length -
                           TABLE_NAMES.reduce(
                             (sum, t) => sum + (bookedMap[t]?.size || 0),
@@ -323,9 +326,9 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
                     </CardContent>
                   </Card>
                   <Card>
-                    <CardContent className="p-3">
-                      <p className="text-muted-foreground text-xs">ช่องจองแล้ว</p>
-                      <p className="text-xl font-bold text-red-500">
+                    <CardContent className="p-2.5 sm:p-3">
+                      <p className="text-muted-foreground text-[10px] sm:text-xs">ช่องจองแล้ว</p>
+                      <p className="text-lg sm:text-xl font-bold text-red-500">
                         {TABLE_NAMES.reduce(
                           (sum, t) => sum + (bookedMap[t]?.size || 0),
                           0
@@ -335,7 +338,7 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
                   </Card>
                 </div>
               </div>
-            </ScrollArea>
+            </div>
           )}
         </div>
       </DialogContent>
