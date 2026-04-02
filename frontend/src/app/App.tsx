@@ -76,7 +76,7 @@ const facilities = [
   { icon: Wifi, title: "Wi-Fi ฟรี", desc: "อินเทอร์เน็ตไร้สายสำหรับลูกค้า" },
   { icon: Users, title: "พนักงานแนะนำ", desc: "คอยแนะนำและสอนวิธีเล่นเกม" },
   { icon: Gamepad2, title: "300+ เกม", desc: "บอร์ดเกมหลากหลายประเภท" },
-  { icon: Clock, title: "เปิดทุกวัน", desc: "จันทร์–เสาร์ 14:00–24:00 น." },
+  { icon: Clock, title: "เปิดทุกวัน", desc: "จันทร์–อาทิตย์ 14:00–24:00 น." },
 ];
 
 function MenuCard({ item }: { item: typeof menuItems[number] }) {
@@ -423,8 +423,7 @@ export default function App() {
             <div>
               <h3 className="font-semibold mb-3">เวลาทำการ</h3>
               <div className="text-sm text-muted-foreground space-y-1.5">
-                <p>จันทร์–เสาร์: 14:00–24:00 น.</p>
-                <p>อาทิตย์: ปิดทำการ</p>
+                <p>จันทร์–อาทิตย์: 14:00–24:00 น.</p>
                 <p className="pt-2 text-xs">แนะนำจองล่วงหน้าช่วงวันหยุด</p>
               </div>
             </div>
