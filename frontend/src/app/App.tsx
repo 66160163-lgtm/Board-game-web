@@ -135,8 +135,8 @@ export default function App() {
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
           <a href="#" className="flex items-center gap-2">
-            <img src="/305348491_476807741121931_685029175630906297_n.jpg" alt="Doodle" className="h-8 w-8 object-contain dark:invert" />
-            <span className="font-semibold tracking-tight">Doodle Boardgame Cafe</span>
+            <img src="/305348491_476807741121931_685029175630906297_n.jpg" alt="Doodle Board Game" className="h-8 w-8 object-contain dark:invert" />
+            <span className="font-semibold tracking-tight">Doodle Board Game</span>
           </a>
 
           {/* Desktop nav */}
@@ -221,9 +221,9 @@ export default function App() {
       {/* ── Hero ── */}
       <section className="relative overflow-hidden border-b">
         <div className="container mx-auto flex flex-col items-center px-4 py-14 sm:py-24 text-center">
-          <img src="/305348491_476807741121931_685029175630906297_n.jpg" alt="Doodle" className="h-24 w-24 sm:h-40 sm:w-40 object-contain mb-6 sm:mb-8 dark:invert" />
+          <img src="/305348491_476807741121931_685029175630906297_n.jpg" alt="Doodle Board Game" className="h-24 w-24 sm:h-40 sm:w-40 object-contain mb-6 sm:mb-8 dark:invert" />
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-3">
-            Doodle Boardgame Cafe
+            Doodle Board Game
           </h1>
           <p className="text-lg text-muted-foreground mb-2">คาเฟ่บอร์ดเกม บางแสน</p>
           <p className="text-muted-foreground max-w-md mb-8">
@@ -397,10 +397,10 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-10">
             <div>
               <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <Gamepad2 className="h-5 w-5" /> Doodle Boardgame Cafe
+                <Gamepad2 className="h-5 w-5" /> Doodle Board Game
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                คาเฟ่บอร์ดเกมครบวงจรในบางแสน ชลบุรี บอร์ดเกม 300+ เกม พร้อมเครื่องดื่มและอาหาร
+                คาเฟ่บอร์ดเกมครบวงจรในบางแสน ชลบุรี บอร์ดเกม 300+ เกม พร้อมเครื่องดื่มและอาหารว่าง
               </p>
             </div>
             <div>
@@ -416,7 +416,7 @@ export default function App() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Facebook className="h-4 w-4 shrink-0" />
-                  <a href="https://www.facebook.com/share/1GjwGJiGP8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Doodle Boardgame Cafe</a>
+                  <a href="https://www.facebook.com/share/1GjwGJiGP8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Doodle Board Game</a>
                 </div>
               </div>
             </div>
@@ -429,9 +429,14 @@ export default function App() {
             </div>
           </div>
           <Separator className="my-8" />
-          <p className="text-center text-xs text-muted-foreground">
-            © 2026 Doodle Boardgame Cafe. สงวนลิขสิทธิ์.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-xs text-muted-foreground">
+              © 2026 Doodle Board Game. สงวนลิขสิทธิ์.
+            </p>
+            <a href="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors underline">
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </footer>
 
