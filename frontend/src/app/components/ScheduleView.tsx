@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { supabase } from "../../utils/supabase";
-import { ChevronLeft, ChevronRight, CalendarDays, Clock } from "lucide-react";
+import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -64,18 +64,12 @@ interface ScheduleViewProps {
 export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
-    // If today is Sunday, go to Monday
-    if (today.getDay() === 0) {
-      today.setDate(today.getDate() + 1);
-    }
     return today;
   });
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(false);
 
   const dateStr = toDateString(selectedDate);
-  const isSunday = selectedDate.getDay() === 0;
-
   useEffect(() => {
     if (!isOpen) return;
     fetchBookings();
@@ -205,12 +199,7 @@ export function ScheduleView({ isOpen, onClose, isAdmin }: ScheduleViewProps) {
 
         {/* Schedule Grid */}
         <div className="flex-1 min-h-0 overflow-hidden">
-          {isSunday ? (
-            <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-6">
-              <Clock className="w-16 h-16 mb-4" />
-              <p className="text-xl font-semibold">ร้านปิดวันอาทิตย์</p>
-            </div>
-          ) : loading ? (
+          {loading ? (
             <div className="p-6 space-y-3">
               {Array.from({ length: 6 }).map((_, i) => (
                 <Skeleton key={i} className="h-12 w-full" />

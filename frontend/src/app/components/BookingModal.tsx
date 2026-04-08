@@ -119,12 +119,6 @@ export function BookingModal({
   };
 
   const validateBookingTime = (): string | null => {
-    if (formData.date) {
-      const selectedDate = new Date(formData.date + "T00:00:00");
-      if (selectedDate.getDay() === 0) {
-        return "ร้านปิดวันอาทิตย์ กรุณาเลือกวันอื่น";
-      }
-    }
     if (formData.time) {
       const [h, m] = formData.time.split(":").map(Number);
       const totalMin = h * 60 + m;
@@ -237,7 +231,7 @@ export function BookingModal({
                 <Label htmlFor="date" className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" /> วันที่เล่น
                 </Label>
-                <DatePickerNoSunday
+                <DatePicker
                   value={formData.date}
                   onChange={(val) => setFormData({ ...formData, date: val })}
                 />
@@ -438,7 +432,7 @@ function MenuItemRow({
   );
 }
 
-function DatePickerNoSunday({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+function DatePicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const today = new Date();
@@ -478,10 +472,9 @@ function DatePickerNoSunday({ value, onChange }: { value: string; onChange: (v: 
   for (let i = 0; i < firstDay; i++) cells.push({ day: 0, disabled: true, selected: false, past: false });
   for (let d = 1; d <= daysInMonth; d++) {
     const date = new Date(viewYear, viewMonth, d);
-    const isSunday = date.getDay() === 0;
     const isPast = date < today;
     const dateStr = `${viewYear}-${pad(viewMonth + 1)}-${pad(d)}`;
-    cells.push({ day: d, disabled: isSunday || isPast, selected: dateStr === value, past: isPast });
+    cells.push({ day: d, disabled: isPast, selected: dateStr === value, past: isPast });
   }
 
   return (
@@ -535,7 +528,7 @@ function DatePickerNoSunday({ value, onChange }: { value: string; onChange: (v: 
               )
             )}
           </div>
-          <p className="text-xs text-red-400 mt-2 text-center">* ร้านปิดวันอาทิตย์</p>
+
         </div>
       )}
     </div>
